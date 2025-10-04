@@ -1,11 +1,8 @@
-"use client";
-
-import { TempoInit } from "@/components/tempo-init";
-import type { Metadata } from "next";
+// src/app/layout.tsx (server component)
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
-import { ClerkProvider } from '@clerk/nextjs';
+import type { Metadata } from "next";
+import ClientProviders from "./ClientProviders"; // <-- create this
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,19 +11,11 @@ export const metadata: Metadata = {
   description: "A modern full-stack starter template powered by Next.js",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (   
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
     <html lang="en" suppressHydrationWarning>
-      {/* <Script src="https://api.tempo.build/proxy-asset?url=https://storage.googleapis.com/tempo-public-assets/error-handling.js" /> [deprecated] */}
       <body className={inter.className}>
-        <ClerkProvider>
-          {children}
-          <TempoInit />
-        </ClerkProvider>
+        <ClientProviders>{children}</ClientProviders>
       </body>
     </html>
   );

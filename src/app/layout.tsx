@@ -17,12 +17,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <ClerkProvider>
+  return (   
     <html lang="en" suppressHydrationWarning>
       {/* <Script src="https://api.tempo.build/proxy-asset?url=https://storage.googleapis.com/tempo-public-assets/error-handling.js" /> [deprecated] */}
       <body className={inter.className}>
-        {children}
+         <ClerkProvider>
+        {children}           
+        </ClerkProvider>;
         <TempoInit />
       </body>
     </html>

@@ -22,9 +22,9 @@ export default function RootLayout({
       {/* <Script src="https://api.tempo.build/proxy-asset?url=https://storage.googleapis.com/tempo-public-assets/error-handling.js" /> [deprecated] */}
       <body className={inter.className}>
          <ClerkProvider>
-        {children}           
-        </ClerkProvider>;
+        {children}        
         <TempoInit />
+        </ClerkProvider>
       </body>
     </html>
   );
